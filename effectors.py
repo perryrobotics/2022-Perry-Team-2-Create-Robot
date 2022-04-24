@@ -7,7 +7,7 @@ KIPR=ctypes.CDLL("/usr/lib/libkipr.so")
     
 def close_claw():
 	KIPR.cmpc(CLAW)
-	KIPR.mav(CLAW,-1100)
+	KIPR.mav(CLAW,-1500)  #original value was 1100
 	while KIPR.gmpc(CLAW) >-CLAW_TICKS:
 		pass
         
@@ -16,7 +16,7 @@ def close_claw():
             
 def open_claw():
 	KIPR.cmpc(CLAW)
-	KIPR.mav(CLAW,1100)
+	KIPR.mav(CLAW,1500)
 	while KIPR.gmpc(CLAW) < CLAW_TICKS:
 		pass
         
@@ -25,7 +25,7 @@ def open_claw():
             
 def arm_drop():
 	KIPR.set_servo_position(ARM, ARM_DROP)
-	KIPR.msleep(1000)
+	KIPR.msleep(500)
         
 def arm_shake():
 	KIPR.set_servo_position(ARM, ARM_SHAKE)
@@ -38,3 +38,6 @@ def arm_score_cube():
         
 def arm_botguy():
 	KIPR.set_servo_position(ARM, ARM_BOTGUY)
+        
+def arm_drop_cube():
+	KIPR.set_servo_position(ARM, ARM_DROP_CUBE)
